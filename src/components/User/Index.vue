@@ -2,7 +2,7 @@
     <div>
         <b-card v-for="blog in blogs" :key="blog.id">
         <b-media no-body >
-            <!-- <i @click="deleteblog(blog.id)">delete</i> -->
+            <i @click="deleteblog(blog.id)">delete</i>
         <b-media-aside vertical-align="center">
         <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
          </b-media-aside>
@@ -49,15 +49,15 @@ export default {
             });
         })
     },
-    // methods: {
-    //     deleteblog(id){
-    //         db.collection('blogs').doc(id).delete().then(() =>{
-    //             this.blogs = this.blogs.filter(blog => {
-    //                 return blog.id != id
-    //             })
-    //         })
-    //     }
-    // }
+    methods: {
+        deleteblog(id){
+            db.collection('blogs').doc(id).delete().then(() =>{
+                this.blogs = this.blogs.filter(blog => {
+                    return blog.id != id
+                })
+            })
+        }
+    }
 }
 </script>
 

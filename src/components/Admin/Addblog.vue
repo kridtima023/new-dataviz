@@ -8,7 +8,7 @@
   </b-img>
   <!-- Styled -->
   <b-form-file v-model="blog.file" :state="Boolean(blog.file)" placeholder="Choose a file..."></b-form-file>
-  <!-- <div class="mt-3">Selected file: {{blog.file && blog.file.name}}</div> -->
+  <div class="mt-3">Selected file: {{blog.file && blog.file.name}}</div>
 
     <label>Title :</label>
     <b-form-input     type="text"
@@ -50,7 +50,7 @@
     </div>
 
  <!-- Plain mode -->
-  <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
+  <!-- <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
 
   </div>
 </template>
@@ -65,16 +65,16 @@ export default {
     data () {
     return {
       blog :{
-
+        
       img : null ,
       file: null ,
       description : null,
-      
+
       selected: 'first',
       options: [
         { text: 'Line', value: 'first' },
-        { text: 'Bar', value: [Bar] },
-        { text: 'Pie', value: 'third' }
+        { text: 'Bar', value: 'Bar' },
+        { text: 'Pie', value: 'third' }   
       ]
 
       },
@@ -95,9 +95,9 @@ export default {
         title : this.title,
         slug : this.slug
       }).then(() => {
-        this.$router.push({ name : 'Navbar '})
+        // this.$router.push({ name : 'Navbar '})
       })
-        // console.log(this.blog)
+        console.log(this.blog)
     }
   }
 

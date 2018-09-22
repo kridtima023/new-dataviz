@@ -24,7 +24,7 @@
 <!-- navbar-1.vue -->
 
 <div>
-  <b-img :src="image"  alt="Responsive image" />
+  <b-img :src="image" fluid-grow   alt="Responsive image" />
 </div>
 
 <b-nav-form class="search">
