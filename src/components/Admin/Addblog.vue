@@ -49,8 +49,25 @@
       <router-link :to="{ name : 'Navbar'}"><b-button>Cancel</b-button></router-link>
     </div>
 
- <!-- Plain mode -->
-  <b-form-file v-model="file2" class="mt-3" plain></b-form-file>
+ <!-- Plain mode
+  <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
+
+
+<div class="small">
+<bar v-if="blog.selected == 'bar'"></bar>
+<line-chart v-if="blog.selected == 'line'"></line-chart>
+<doughnut v-if="blog.selected =='doughnut'"></doughnut>
+<pie v-if="blog.selected =='pie'"></pie>
+<radar v-if="blog.selected =='radar'"></radar>
+<polar-area v-if="blog.selected =='polar'"></polar-area>
+<bubble v-if="blog.selected =='bubble'"></bubble>
+<horizaontal-bar v-if="blog.selected =='horizontal'"></horizaontal-bar>
+
+</div>
+   
+
+
+
 
   </div>
 </template>
@@ -59,9 +76,21 @@
 import db from '@/firebase/init'
 import slugify from 'slugify'
 import Bar from '../Chart/BarChart.js'
+import LineChart from '../Chart/LineChart.js'
+import Doughnut from '../Chart/DoughnutChart.js'
+import Pie from '../Chart/PieChart.js'
+import Radar from '../Chart/RadarChart.js'
+import PolarArea from '../Chart/PolarChart.js'
+import Bubble from '../Chart/BubbleChart.js'
+import HorizaontalBar from '../Chart/HorizontalChart.js'
+
+
+
+
+
 export default {
     name : 'Addblog',
-    components : { 'Bar': Bar},
+    components : { Bar, LineChart, Doughnut, Pie, Radar, PolarArea, Bubble, HorizaontalBar},
     data () {
     return {
       blog :{
@@ -72,9 +101,14 @@ export default {
       
       selected: 'first',
       options: [
-        { text: 'Line', value: 'first' },
-        { text: 'Bar', value: [Bar] },
-        { text: 'Pie', value: 'third' }
+        { text: 'Line', value: 'line' },
+        { text: 'Doughnut', value: 'doughnut' },
+        { text: 'Bar', value: 'bar' },
+        { text: 'Pie', value: 'pie' },
+        { text: 'Radar', value: 'radar' },
+        { text: 'Polar', value: 'polar' },
+        { text: 'Bubble', value: 'bubble' },
+        { text: 'Horizontal', value: 'horizontal' }
       ]
 
       },
