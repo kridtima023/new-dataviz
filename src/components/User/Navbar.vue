@@ -27,7 +27,7 @@
   <b-img :src="image" fluid-grow   alt="Responsive image" />
 </div>
 
-<b-nav-form class="search">
+<b-nav-form class="search" center>
         <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
         <b-button size="sm" class="my-2 my-sm-0" type="submit" variant="info ">Search</b-button>
 </b-nav-form>

@@ -24,7 +24,10 @@
         
 
         <div>
-            <b-button size="sm" >Read More...</b-button>
+            <router-link :to="{ name : 'Readmore' }">
+                <b-button size="sm" class="my-2 my-sm-0" type="submit">Read More...</b-button>
+            </router-link>
+            <!-- <b-button size="sm" >Read More...</b-button> -->
         </div>
         </b-media-body>
     
