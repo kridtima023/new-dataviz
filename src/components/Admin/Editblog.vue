@@ -1,8 +1,9 @@
 <template>
-<div>
-    <h2 class="center-align indigo-text ">Add a New Blog</h2>
-  
-    <!-- image -->
+    <div v-if="blog" class="edit-blog">
+        <h2>Edit Your Blog {{blog.title}}</h2>
+        <!-- {{this.$route.params.edit_slug}} -->
+
+        <!-- image -->
   <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" v-model="blog.img" >
     {{ blog.file }}
   </b-img>
@@ -16,6 +17,8 @@
                       required
                       placeholder="Enter Title">
     </b-form-input>
+
+
 
     <label>Description :</label>
     <b-form-textarea id="description"
@@ -31,13 +34,9 @@
     <!-- select a chart -->
      <b-form-group label="Select a Chart">
       <b-form-radio-group v-model="blog.selected" 
-                          :options="options">
+                          :options="blog.options">
       </b-form-radio-group>
     </b-form-group>
-
-
-
-
 
   <!-- preview -->
     <div class="mt-3">
@@ -51,81 +50,36 @@
 
   <!-- submit -->
     <div class="btn">
-      <b-button v-on:click="Addblog()" >Confirm</b-button>
+      <b-button v-on:click="Editblog()" >Update</b-button>
       <router-link :to="{ name : 'Navbar'}"><b-button>Cancel</b-button></router-link>
     </div>
-
- <!-- Plain mode -->
-  <!-- <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
- <!-- Plain mode
-  <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
-
-
-  </div>
+    </div>
 </template>
 
 <script>
 import db from '@/firebase/init'
-import slugify from 'slugify'
 import Bar from '../Chart/BarChart.js'
 import LineChart from '../Chart/LineChart.js'
-
 export default {
-    name : 'Addblog',
-    components : { Bar, LineChart},
-
-    data () {
-    return {
-
-      blog :{
-   
-      img : null ,
-      file: null ,
-      description : null,
-      slug : null ,
-      title : null,
-      selected: null,
-      
-    } ,
-  options: [{ text:'Line' , value:'line'},{text:'Bar',value:'bar'}]
-      }
-      
-  },
-  methods : {
-    Addblog() {
-      //create a slug 
-      this.slug = slugify(this.blog.title,{
-        replacement :'-',
-        remove : /[$*_+~.()'"!\-;@]/g,
-        lower : true 
-      })
-      db.collection('blogs').add({
-        blog : this.blog,       
-        options : this.options,
-        slug : this.slug,
-        
-      }).then(() => {
-        // this.$router.push({ name : 'Navbar '})
-        
-             
-      })
-
-        console.log(this.blog,this.options)
-    } 
-
+    name : 'Editblog',
+    data(){
+        return{
+            blog : null ,
+        }
+    },
+    created(){
+        let ref = db.collection('blogs').where('slug','==',this.$route.params.edit_slug)
+        ref.get().then(snapshot => {
+            snapshot.forEach(doc => {
+                // console.log(doc.data())
+                this.blog = doc.data()
+                this.blog.id = doc.id
+            });
+        })
     }
-
 }
 </script>
 
-<!-- form-file.vue -->
-
 <style>
-.btn {
-  margin: 5px;
-}
-.small {
-    max-width: 600px;
-    margin:  100px auto;
-  }
+
 </style>

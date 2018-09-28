@@ -1,18 +1,11 @@
 <template>
     <div>
-        <b-card v-for="blog in this.blogs" :key="blog.id">
-        <b-media no-body >
-            <i @click="deleteblog(blog.id)">delete</i>
-            <b-button><router-link :to="{name:'Editblog', params: {edit_slug: blog.slug}}">
-                Edit
-                </router-link></b-button>
-                
         <b-media-aside vertical-align="center">
         <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
-         </b-media-aside>
-        
-        
-         <b-media-body class="ml-3">
+        </b-media-aside>
+        <b-card v-for="blog in this.blogs" :key="blog.id">
+        <b-media no-body >
+        <b-media-body class="ml-3">
         
         <h5 class="mt-0">{{blog.blog.title}}</h5>
         <p>
@@ -22,23 +15,17 @@
         in faucibus.
         </p>
         
-
-        <div>
-            <b-button size="sm" >Read More...</b-button>
-        </div>
         </b-media-body>
-    
         </b-media>
         </b-card>
 
-        <!-- media-2.vue -->
     </div>
 </template>
 
 <script>
 import db from '@/firebase/init'
 export default {
-    name : 'Index',
+    name : 'Detailblog',
     data(){
         return{
             blogs : []
@@ -55,15 +42,6 @@ export default {
             });
         })
     },
-    methods: {
-        deleteblog(id){
-            db.collection('blogs').doc(id).delete().then(() =>{
-                this.blogs = this.blogs.filter(blog => {
-                    return blog.id != id
-                })
-            })
-        }
-    }
 }
 </script>
 

@@ -4,6 +4,8 @@ import Navbar from '@/components/User/Navbar'
 import Addblog from '@/components/Admin/Addblog'
 import Signin from '@/components/Admin/Signin'
 import Detail from '@/components/User/Detail'
+import Editblog from '@/components/Admin/Editblog'
+import Detailblog from '@/components/Admin/Detailblog'
 
 Vue.use(Router)
 
@@ -30,5 +32,19 @@ export default new Router({
       name: 'Detail',
       component: Detail
     }
+    ,
+    {
+      path: '/edit-blog/:edit_slug',
+      name: 'Editblog',
+      component: Editblog
+    }
+    ,
+    {
+      path: '/detailblog',
+      name: 'Detailblog',
+      component: Detailblog
+    }
+
+
   ]
 })

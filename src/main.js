@@ -5,10 +5,10 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueCharts from 'vue-chartjs'
-import { Bar, Line } from 'vue-chartjs'
+import { Bar, Line, Doughnut } from 'vue-chartjs'
 import JsonExcel from 'vue-json-excel'
 
-Vue.use(BootstrapVue,VueCharts,Bar,Line);
+Vue.use(BootstrapVue,VueCharts,Bar,Line,Doughnut);
 Vue.component('downloadExcel', JsonExcel)
 
 Vue.config.productionTip = false
