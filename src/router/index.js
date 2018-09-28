@@ -4,6 +4,7 @@ import Navbar from '@/components/User/Navbar'
 import Addblog from '@/components/Admin/Addblog'
 import Signin from '@/components/Admin/Signin'
 import Detail from '@/components/User/Detail'
+import Readmore from '@/components/User/Readmore'
 
 Vue.use(Router)
 
@@ -29,6 +30,12 @@ export default new Router({
       path: '/detail',
       name: 'Detail',
       component: Detail
+    }
+    ,
+    {
+      path: '/readmore',
+      name: 'Readmore',
+      component: Readmore
     }
   ]
 })
