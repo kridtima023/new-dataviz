@@ -13,7 +13,7 @@
     <!-- Right aligned nav items -->
     <b-navbar-nav class="ml-auto">
       <b-nav-form>
-        <router-link :to="{ name : 'Signin' }">
+        <router-link :to="{ path: '/sign-in' }">
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Sign In</b-button>
         </router-link>
       </b-nav-form>
@@ -43,6 +43,7 @@
 </template>
 
 <script>
+import firebase from "@/firebase/init"
 import Index from '../User/Index.vue'
 export default {
     name : 'Navbar',

@@ -6,22 +6,24 @@
             <b-button><router-link :to="{name:'Editblog', params: {edit_slug: blog.slug}}">
                 Edit
                 </router-link></b-button>
-                
+        
+       
+
+
         <b-media-aside vertical-align="center">
-        <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
-         </b-media-aside>
+            <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
+        </b-media-aside>
         
         
-         <b-media-body class="ml-3">
-        
-        <h5 class="mt-0">{{blog.blog.title}}</h5>
-        <p>
-        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
-        sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-        Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
-        in faucibus.
-        </p>
-        
+        <b-media-body class="ml-3">
+            <b-media-body>
+            <h5 class="mt-0 mb-1">{{blog.blog.title}}</h5>
+                <p>
+                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
+                    sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+                    Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis
+                    in faucibus.
+                </p>       
 
         <div>
             <router-link :to="{ name : 'Readmore' }">
@@ -29,6 +31,7 @@
             </router-link>
             <!-- <b-button size="sm" >Read More...</b-button> -->
         </div>
+            </b-media-body>
         </b-media-body>
     
         </b-media>

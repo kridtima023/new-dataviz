@@ -2,13 +2,13 @@
 <div>
     <h2 class="center-align indigo-text ">Add a New Blog</h2>
   
-    <!-- image -->
-  <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" v-model="blog.img" >
+  <!-- image -->
+    <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" v-model="blog.img" >
     {{ blog.file }}
-  </b-img>
+    </b-img>
   <!-- Styled -->
-  <b-form-file v-model="blog.file" :state="Boolean(blog.file)" placeholder="Choose a file..."></b-form-file>
-  <div class="mt-3">Selected file: {{blog.file && blog.file.name}}</div>
+    <b-form-file v-model="blog.file" :state="Boolean(blog.file)" placeholder="Choose a file..."></b-form-file>
+    <div class="mt-3">Selected file: {{blog.file && blog.file.name}}</div>
 
     <label>Title :</label>
     <b-form-input     type="text"
@@ -29,7 +29,7 @@
 
 
     <!-- select a chart -->
-     <b-form-group label="Select a Chart">
+    <b-form-group label="Select a Chart">
       <b-form-radio-group v-model="blog.selected" 
                           :options="options">
       </b-form-radio-group>
