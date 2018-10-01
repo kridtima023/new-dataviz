@@ -14,7 +14,7 @@
         
          <b-media-body class="ml-3">
         
-        <h5 class="mt-0">{{blog.blog.title}}</h5>
+        <h5 class="mt-0">{{blog.title}}</h5>
         <p>
         Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante
         sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
@@ -25,7 +25,7 @@
 
         <div>
             <router-link :to="{ name : 'Readmore' }">
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">Read More...</b-button>
+                <b-button size="sm" class="my-2 my-sm-0" type="submit"><router-link :to="{name : 'Detailblog', params: {detail_slug : blog.slug}}">Read More...</router-link></b-button>
             </router-link>
             <!-- <b-button size="sm" >Read More...</b-button> -->
         </div>

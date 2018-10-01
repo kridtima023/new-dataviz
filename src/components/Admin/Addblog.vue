@@ -2,24 +2,19 @@
 <div>
     <h2 class="center-align indigo-text ">Add a New Blog</h2>
   
-    <!-- image -->
-  <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" v-model="blog.img" >
-    {{ blog.file }}
-  </b-img>
-  <!-- Styled -->
-  <b-form-file v-model="blog.file" :state="Boolean(blog.file)" placeholder="Choose a file..."></b-form-file>
-  <div class="mt-3">Selected file: {{blog.file && blog.file.name}}</div>
+
+<v-uploader :preview-width="400" :preview-height="300" @done="uploadDone"></v-uploader>
 
     <label>Title :</label>
     <b-form-input     type="text"
-                      v-model="blog.title"
+                      v-model="title"
                       required
                       placeholder="Enter Title">
     </b-form-input>
 
     <label>Description :</label>
     <b-form-textarea id="description"
-                     v-model="blog.description"
+                     v-model="description"
                      placeholder="Enter Description"
                      :rows="3"
                      :max-rows="6">
@@ -30,23 +25,20 @@
 
     <!-- select a chart -->
      <b-form-group label="Select a Chart">
-      <b-form-radio-group v-model="blog.selected" 
+      <b-form-radio-group v-model="selected" 
                           :options="options">
       </b-form-radio-group>
     </b-form-group>
 
 
-
-
-
   <!-- preview -->
     <div class="mt-3">
-      Selected: <strong>{{ blog.selected }}</strong>
+      Selected: <strong>{{ selected }}</strong>
     </div>
     <!-- chart -->
   <div class="small">
-  <bar v-if="blog.selected == 'bar'"></bar>
-  <line-chart v-if="blog.selected == 'line'"></line-chart>
+  <bar v-if="selected == 'bar'"></bar>
+  <line-chart v-if="selected == 'line'"></line-chart>
   </div>
 
   <!-- submit -->
@@ -76,32 +68,27 @@ export default {
 
     data () {
     return {
-
-      blog :{
-   
       img : null ,
-      file: null ,
       description : null,
       slug : null ,
       title : null,
       selected: null,
-      
-    } ,
-  options: [{ text:'Line' , value:'line'},{text:'Bar',value:'bar'}]
+      options: [{ text:'Line' , value:'line'},{text:'Bar',value:'bar'}]
       }
       
   },
   methods : {
     Addblog() {
       //create a slug 
-      this.slug = slugify(this.blog.title,{
+      this.slug = slugify(this.title,{
         replacement :'-',
         remove : /[$*_+~.()'"!\-;@]/g,
         lower : true 
       })
       db.collection('blogs').add({
-        blog : this.blog,       
-        options : this.options,
+        title : this.title,
+        description : this.description,
+        selected : this.selected,      
         slug : this.slug,
         
       }).then(() => {
@@ -110,8 +97,13 @@ export default {
              
       })
 
-        console.log(this.blog,this.options)
-    } 
+        console.log(this.title,this.description,this.selected)
+    },
+            uploadDone(files){
+            if(files && Array.isArray(files) && files.length){
+                console.log(files);
+            }
+        } 
 
     }
 
