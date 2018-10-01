@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import firebase from '@/firebase/init'
+import db from '@/firebase/init'
+import firebase from 'firebase'
 export default {
     name : 'Signin',
     data () {
@@ -25,7 +26,7 @@ export default {
             firebase.auth().signInWithEmailAndPassword(this.formData.email,this.formData.password)
                 .then((user)=>{
                   // Do Something After Sign in
-                  this.$store.commit('signin', true)
+                    //console.log(user)
                   this.$router.replace('/')                  
                 })
                 .catch((e)=>{

@@ -3,14 +3,6 @@
         <h2>Edit Your Blog {{blog.title}}</h2>
         <!-- {{this.$route.params.edit_slug}} -->
 
-        <!-- image -->
-  <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" v-model="blog.img" >
-    {{ blog.file }}
-  </b-img>
-  <!-- Styled -->
-  <b-form-file v-model="blog.file" :state="Boolean(blog.file)" placeholder="Choose a file..."></b-form-file>
-  <div class="mt-3">Selected file: {{blog.file && blog.file.name}}</div>
-
     <label>Title :</label>
     <b-form-input     type="text"
                       v-model="blog.title"
@@ -33,8 +25,8 @@
 
     <!-- select a chart -->
      <b-form-group label="Select a Chart">
-      <b-form-radio-group v-model="blog.selected" 
-                          :options="blog.options">
+      <b-form-radio-group  v-model="blog.selected" 
+                          :options="options">
       </b-form-radio-group>
     </b-form-group>
 
@@ -60,11 +52,15 @@
 import db from '@/firebase/init'
 import Bar from '../Chart/BarChart.js'
 import LineChart from '../Chart/LineChart.js'
+import slugify from 'slugify'
 export default {
     name : 'Editblog',
+    components:{Bar, LineChart},
     data(){
         return{
             blog : null ,
+            slug : null ,
+            options: [{ text:'Line' , value:'line'},{text:'Bar',value:'bar'}]
         }
     },
     created(){
@@ -76,7 +72,28 @@ export default {
                 this.blog.id = doc.id
             });
         })
+    },
+    methods : {
+            Editblog(){
+        this.slug = slugify(this.blog.title,{
+        replacement :'-',
+        remove : /[$*_+~.()'"!\-;@]/g,
+        lower : true 
+      })
+        db.collection('blogs').doc(this.blog.id).update({
+            title : this.blog.title,
+            description : this.blog.description,
+            selected : this.blog.selected,
+            slug : this.slug
+       
+        }).then(() =>{
+            // this.$router.push({name : 'Navbar'})
+        }).catch(err =>{
+            console.log(err)
+        })
     }
+    }
+
 }
 </script>
 
