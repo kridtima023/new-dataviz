@@ -99,13 +99,7 @@ export default {
       })
 
         console.log(this.title,this.description,this.selected)
-    },
-<<<<<<< HEAD
-
-=======
-         
->>>>>>> 53071c4091c666d0aee5c38e480a3b768816c549
-
+    }
     }
 
 }

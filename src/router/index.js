@@ -6,13 +6,10 @@ import Signin from '@/components/Admin/Signin'
 import Detail from '@/components/User/Detail'
 import Editblog from '@/components/Admin/Editblog'
 import Detailblog from '@/components/Admin/Detailblog'
-<<<<<<< HEAD
 import Test from '@/components/Admin/Test'
 
-=======
 import Readmore from '@/components/User/Readmore'
 import IndexAdmin from '@/components/Admin/IndexAdmin'
->>>>>>> 53071c4091c666d0aee5c38e480a3b768816c549
 
 Vue.use(Router)
 
@@ -53,11 +50,12 @@ export default new Router({
     }
     ,
     {
-<<<<<<< HEAD
       path: '/test/',
       name: 'Test',
       component: Test
-=======
+    },{
+
+    
       path: '/Readmore',
       name: 'Readmore',
       component: Readmore
@@ -67,7 +65,6 @@ export default new Router({
       path: '/IndexAdmin',
       name: 'IndexAdmin',
       component: IndexAdmin
->>>>>>> 53071c4091c666d0aee5c38e480a3b768816c549
     }
 
 

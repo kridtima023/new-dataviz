@@ -1,8 +1,5 @@
 <template>
     <div>
-<<<<<<< HEAD
- 
-=======
         <b-media-aside vertical-align="center">
         <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
         </b-media-aside>
@@ -24,7 +21,6 @@
         </b-media>
         </b-card>
 
->>>>>>> 53071c4091c666d0aee5c38e480a3b768816c549
     </div>
 </template>
 
