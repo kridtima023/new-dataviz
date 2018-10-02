@@ -25,45 +25,47 @@
 </template>
 
 <script>
-import db from '@/firebase/init'
-import Bar from '../Chart/BarChart.js'
-import LineChart from '../Chart/LineChart.js'
+import db from "@/firebase/init";
+import Bar from "../Chart/BarChart.js";
+import LineChart from "../Chart/LineChart.js";
 export default {
-    name : 'Detailblog',
-    components:{Bar, LineChart},
-    
-    data(){
-        return{
-            blog : null 
-        }
-    },
-    // created(){
-    //     db.collection('blogs').get().then(snapshot => {
-    //         snapshot.forEach(doc => {
-    //             console.log(doc.data())
-    //             // let blog = doc.data()
-    //             // blog.id = doc.id
-    //             // this.blogs.push(blog)
-    //             // this.blogs.push(doc.data())
-    //         });
-    //     })
-    // },
-        created(){
-        let ref = db.collection('blogs').where('slug','==',this.$route.params.detail_slug)
-        ref.get().then(snapshot => {
-            snapshot.forEach(doc => {
-                // console.log(doc.data())
-                this.blog = doc.data()
-                this.blog.id = doc.id
-            });
-        })
-    }
-}
+  name: "Detailblog",
+  components: { Bar, LineChart },
+
+  data() {
+    return {
+      blog: null
+    };
+  },
+  // created(){
+  //     db.collection('blogs').get().then(snapshot => {
+  //         snapshot.forEach(doc => {
+  //             console.log(doc.data())
+  //             // let blog = doc.data()
+  //             // blog.id = doc.id
+  //             // this.blogs.push(blog)
+  //             // this.blogs.push(doc.data())
+  //         });
+  //     })
+  // },
+  created() {
+    let ref = db
+      .collection("blogs")
+      .where("slug", "==", this.$route.params.detail_slug);
+    ref.get().then(snapshot => {
+      snapshot.forEach(doc => {
+        // console.log(doc.data())
+        this.blog = doc.data();
+        this.blog.id = doc.id;
+      });
+    });
+  }
+};
 </script>
 
 <style>
 .small {
-    max-width: 600px;
-    margin:  100px auto;
-  }
+  max-width: 600px;
+  margin: 100px auto;
+}
 </style>
