@@ -99,11 +99,7 @@ export default {
 
         console.log(this.title,this.description,this.selected)
     },
-            uploadDone(files){
-            if(files && Array.isArray(files) && files.length){
-                console.log(files);
-            }
-        } 
+         
 
     }
 

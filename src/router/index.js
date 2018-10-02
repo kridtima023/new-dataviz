@@ -6,7 +6,8 @@ import Signin from '@/components/Admin/Signin'
 import Detail from '@/components/User/Detail'
 import Editblog from '@/components/Admin/Editblog'
 import Detailblog from '@/components/Admin/Detailblog'
-
+import Readmore from '@/components/User/Readmore'
+import IndexAdmin from '@/components/Admin/IndexAdmin'
 
 Vue.use(Router)
 
@@ -44,6 +45,18 @@ export default new Router({
       path: '/detailblog/:detail_slug',
       name: 'Detailblog',
       component: Detailblog
+    }
+    ,
+    {
+      path: '/Readmore',
+      name: 'Readmore',
+      component: Readmore
+    }
+    ,
+    {
+      path: '/IndexAdmin',
+      name: 'IndexAdmin',
+      component: IndexAdmin
     }
 
 
