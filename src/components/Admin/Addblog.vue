@@ -2,8 +2,7 @@
 <div>
     <h2 class="center-align indigo-text ">Add a New Blog</h2>
 
-
-<v-uploader :preview-width="400" :preview-height="300" @done="uploadDone"></v-uploader>
+ <b-form-file v-model="file" accept=".jpg, .png, .gif" placeholder="Choose a file..."></b-form-file>
 
     <label>Title :</label>
     <b-form-input     type="text"
@@ -63,12 +62,13 @@ import Bar from '../Chart/BarChart.js'
 import LineChart from '../Chart/LineChart.js'
 
 export default {
+
     name : 'Addblog',
     components : { Bar, LineChart},
 
     data () {
     return {
-      img : null ,
+      file: null,
       description : null,
       slug : null ,
       title : null,
@@ -86,6 +86,7 @@ export default {
         lower : true 
       })
       db.collection('blogs').add({
+        
         title : this.title,
         description : this.description,
         selected : this.selected,      
@@ -99,11 +100,7 @@ export default {
 
         console.log(this.title,this.description,this.selected)
     },
-            uploadDone(files){
-            if(files && Array.isArray(files) && files.length){
-                console.log(files);
-            }
-        } 
+
 
     }
 

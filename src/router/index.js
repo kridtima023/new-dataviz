@@ -6,6 +6,7 @@ import Signin from '@/components/Admin/Signin'
 import Detail from '@/components/User/Detail'
 import Editblog from '@/components/Admin/Editblog'
 import Detailblog from '@/components/Admin/Detailblog'
+import Test from '@/components/Admin/Test'
 
 
 Vue.use(Router)
@@ -44,6 +45,12 @@ export default new Router({
       path: '/detailblog/:detail_slug',
       name: 'Detailblog',
       component: Detailblog
+    }
+    ,
+    {
+      path: '/test/',
+      name: 'Test',
+      component: Test
     }
 
 
