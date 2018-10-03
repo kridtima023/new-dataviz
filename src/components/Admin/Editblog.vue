@@ -2,6 +2,10 @@
     <div v-if="blog" class="edit-blog">
         <h2>Edit Your Blog {{blog.title}}</h2>
         <!-- {{this.$route.params.edit_slug}} -->
+<!-- image -->
+  <img :src="blog.imagepreview" class="preview-image" v-on:click="openupload" alt="Responsive image" />
+         <b-form-file type="file" name="image" id="file-filed" v-on:change="updatepreview"></b-form-file>
+
 
     <label>Title :</label>
     <b-form-input     type="text"
@@ -42,7 +46,7 @@
 
   <!-- submit -->
     <div class="btn">
-      <b-button v-on:click="Editblog()" >Update</b-button>
+      <router-link :to="{ name : 'Overviews'}"><b-button v-on:click="Editblog()" >Update</b-button></router-link>
       <router-link :to="{ name : 'Navbar'}"><b-button>Cancel</b-button></router-link>
     </div>
     </div>
@@ -59,6 +63,7 @@ export default {
     data(){
         return{
             blog : null ,
+            
             slug : null ,
             options: [{ text:'Line' , value:'line'},{text:'Bar',value:'bar'}]
         }
@@ -84,6 +89,7 @@ export default {
             title : this.blog.title,
             description : this.blog.description,
             selected : this.blog.selected,
+            imagepreview : this.blog.imagepreview,
             slug : this.slug
        
         }).then(() =>{
@@ -91,7 +97,21 @@ export default {
         }).catch(err =>{
             console.log(err)
         })
-    }
+    },
+     openupload(){
+         document.getElementById('file-filed').click()
+     },
+      updatepreview(e){
+         var reader, files = e.target.files 
+         if(files.length == 0 ){
+             console.log('empty')
+         }
+         reader = new FileReader()
+         reader.onload = (e) => { 
+             this.blog.imagepreview = e.target.result
+         }
+         reader.readAsDataURL(files[0])
+     }
     }
 
 }

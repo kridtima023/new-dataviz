@@ -11,7 +11,7 @@
 
 
         <b-media-aside vertical-align="center">
-            <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
+            <img blank blank-color="#ccc" width="450" height="300" alt="placeholder" :src="blog.imagepreview"/>
         </b-media-aside>
    
         <b-media-body class="ml-3">
@@ -23,9 +23,11 @@
 
         <div>
            
-                <b-button size="sm" class="my-2 my-sm-0" type="submit">
-                    <router-link :to="{name : 'Readmore', params: {detail_slug : blog.slug}}">Read More...</router-link>
-                </b-button>
+                
+    <router-link :to="{name : 'Detailblog', params: {detail_slug : blog.slug}}">
+        <b-button size="sm" class="my-2 my-sm-0" type="submit">Read More </b-button>
+    </router-link>
+               
            
             
         </div>
@@ -42,7 +44,7 @@
 <script>
 import db from '@/firebase/init'
 export default {
-    name : 'IndexAdmin',
+    name : 'Overviews',
     data(){
         return{
             blogs : []

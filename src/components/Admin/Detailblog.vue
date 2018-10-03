@@ -1,9 +1,9 @@
 <template>
     <div>
         <b-media-aside vertical-align="center">
-        <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
         </b-media-aside>
         <b-card v-if="blog" :key="blog.id">
+        <img blank blank-color="#ccc" width="600" height="450" alt="placeholder" :src="blog.imagepreview"/>
         <b-media no-body >
         <b-media-body class="ml-3">
         
@@ -16,7 +16,7 @@
         <bar v-if="blog.selected == 'bar'"></bar>
         <line-chart v-if="blog.selected == 'line'"></line-chart>
         </div>
-
+        <router-link :to="{ name : 'Overviews'}"><b-button>Back</b-button></router-link>
         </b-media-body>
         </b-media>
         </b-card>
@@ -34,7 +34,7 @@ export default {
 
   data() {
     return {
-      blog: null
+      blog: []
     };
   },
   // created(){
