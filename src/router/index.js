@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Navbar from '@/components/User/Navbar'
-import Addblog from '@/components/Admin/Addblog'
-import Signin from '@/components/Admin/Signin'
 import Detail from '@/components/User/Detail'
+
+
+// admin
+import Overviews from '@/components/Admin/Overviews'
+import Test from '@/components/Admin/Test'
 import Editblog from '@/components/Admin/Editblog'
 import Detailblog from '@/components/Admin/Detailblog'
-import Test from '@/components/Admin/Test'
-
-import Readmore from '@/components/User/Readmore'
-import IndexAdmin from '@/components/Admin/IndexAdmin'
+import Addblog from '@/components/Admin/Addblog'
+import Signin from '@/components/Admin/Signin'
 
 Vue.use(Router)
 
@@ -53,18 +54,12 @@ export default new Router({
       path: '/test/',
       name: 'Test',
       component: Test
-    },{
-
-    
-      path: '/Readmore',
-      name: 'Readmore',
-      component: Readmore
     }
     ,
     {
-      path: '/IndexAdmin',
-      name: 'IndexAdmin',
-      component: IndexAdmin
+      path: '/Overviews',
+      name: 'Overviews',
+      component: Overviews
     }
 
 

@@ -27,7 +27,7 @@ export default {
                 .then((user)=>{
                   // Do Something After Sign in
                     //console.log(user)
-                  this.$router.replace('/')                  
+                  this.$router.replace('/Overviews')                  
                 })
                 .catch((e)=>{
                     alert(e.message)

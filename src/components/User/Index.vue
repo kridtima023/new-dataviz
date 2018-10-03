@@ -3,7 +3,8 @@
         <b-card class="card mb-3"  v-for="blog in this.blogs" :key="blog.id">
             <b-media no-body>
                 <b-media-aside vertical-align="center">
-                    <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
+                    <img blank blank-color="#ccc" width="450" height="400" alt="placeholder" :src="blog.imagepreview"/>
+                    
                 </b-media-aside>
    
                 <b-media-body class="ml-3">
@@ -20,6 +21,9 @@
                                     
                                 </router-link>
                                        
+                            <b-button size="sm" class="my-2 my-sm-0" type="submit" >
+                                <router-link :to="{name : 'Detailblog', params: {detail_slug : blog.slug}}">Read More...</router-link>
+                            </b-button>           
                         </div>
                     </b-media-body>  
                  </b-media-body>
@@ -40,6 +44,7 @@ export default {
         }
     },
     created(){
+
         db.collection('blogs').get().then(snapshot => {
             snapshot.forEach(doc => {
                 console.log(doc.data())

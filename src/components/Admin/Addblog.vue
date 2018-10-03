@@ -6,6 +6,20 @@
     <label class="head mt-3">Title </label>
     <b-form-input     
                       type="text"
+                      class="center-align indigo-text ">
+    </b-form-input>
+<!-- image -->
+<div>  
+   <img :src="imagepreview" class="preview-image" v-on:click="openupload" alt="Responsive image" />
+   <b-form-file type="file" name="image" id="file-filed" v-on:change="updatepreview"></b-form-file>
+</div>
+
+        <!-- <button>
+            <i class="fa fa-upload" @click="upload">Upload</i>
+        </button> -->
+
+    <label>Title :</label>
+    <b-form-input     type="text"
                       v-model="title"
                       required
                       placeholder="Enter Title">
@@ -44,6 +58,7 @@
   <!-- submit -->
     <div class="btn">
       <b-button v-on:click="Addblog()" >Confirm</b-button>
+      <!-- <router-link :to="{name : 'Overviews'}"><b-button v-on:click="Addblog()" >Confirm</b-button></router-link> -->
       <router-link :to="{ name : 'Navbar'}"><b-button>Cancel</b-button></router-link>
     </div>
 
@@ -69,6 +84,8 @@ export default {
 
     data () {
     return {
+
+      imagepreview : require('../../assets/Upload.png'),
       file: null,
       description : null,
       slug : null ,
@@ -87,20 +104,40 @@ export default {
         lower : true 
       })
       db.collection('blogs').add({
-        
+        imagepreview : this.imagepreview,
         title : this.title,
         description : this.description,
         selected : this.selected,      
         slug : this.slug,
         
       }).then(() => {
-        // this.$router.push({ name : 'Navbar '})
+        // this.$router.push({ name : 'Overviews '})
+        this.$router.replace({name : 'Overviews'})
         
-             
-      })
+      }).catch(err =>{
+            console.log(err)
+     })
+ console.log(this.title,this.description,this.selected)
+    },
+    openupload(){
+         document.getElementById('file-filed').click()
+     },
+      updatepreview(e){
+         var reader, files = e.target.files 
+         if(files.length == 0 ){
+             console.log('empty')
+         }
+         reader = new FileReader()
+         reader.onload = (e) => { 
+             this.imagepreview = e.target.result
+         }
+         reader.readAsDataURL(files[0])
 
-        console.log(this.title,this.description,this.selected)
-    }
+        //  db.collection('blogs').add({
+        //     imagepreview : this.imagepreview
+        //  })
+        //  console.log(this.imagepreview)
+     }
     }
 
 }
