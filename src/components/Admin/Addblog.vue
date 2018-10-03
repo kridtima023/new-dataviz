@@ -1,17 +1,17 @@
 <template>
 <div>
-    <h2 class="center-align indigo-text ">Add a New Blog</h2>
+  <b-card >
+    <h2 class="add">Add a New Blog</h2>
 
- <b-form-file v-model="file" accept=".jpg, .png, .gif" placeholder="Choose a file..."></b-form-file>
-
-    <label>Title :</label>
-    <b-form-input     type="text"
+    <label class="head mt-3">Title </label>
+    <b-form-input     
+                      type="text"
                       v-model="title"
                       required
                       placeholder="Enter Title">
     </b-form-input>
 
-    <label>Description :</label>
+    <label class="head mt-3">Description </label>
     <b-form-textarea id="description"
                      v-model="description"
                      placeholder="Enter Description"
@@ -23,21 +23,22 @@
 
 
     <!-- select a chart -->
-    <b-form-group label="Select a Chart">
+    <b-form-group class="head mt-3" label="Select a Chart">
+      
       <b-form-radio-group v-model="selected" 
                           :options="options">
       </b-form-radio-group>
     </b-form-group>
 
-
   <!-- preview -->
-    <div class="mt-3">
+    <div class="head mt-3">
       Selected: <strong>{{ selected }}</strong>
     </div>
+
     <!-- chart -->
   <div class="small">
-  <bar v-if="selected == 'bar'"></bar>
-  <line-chart v-if="selected == 'line'"></line-chart>
+    <bar v-if="selected == 'bar'"></bar>
+    <line-chart v-if="selected == 'line'"></line-chart>
   </div>
 
   <!-- submit -->
@@ -51,7 +52,7 @@
  <!-- Plain mode
   <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
 
-
+  </b-card>
   </div>
 </template>
 
@@ -110,9 +111,23 @@ export default {
 <style>
 .btn {
   margin: 5px;
+  
 }
 .small {
     max-width: 600px;
     margin:  100px auto;
-  }
+}
+  .add {
+    text-align: center;
+    font-family: Verdana;
+}
+  .head {
+    color: rgb(223, 128, 223);
+    font-family: Lucida Console;
+    font-size: 20px;  
+}
+.placeholder {
+  font-family: Lucida Console;
+}
+ 
 </style>

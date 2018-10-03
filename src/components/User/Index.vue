@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-card class="card border-success mb-3"  v-for="blog in this.blogs" :key="blog.id">
+        <b-card class="card mb-3"  v-for="blog in this.blogs" :key="blog.id">
             <b-media no-body>
                 <b-media-aside vertical-align="center">
                     <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
@@ -8,17 +8,20 @@
    
                 <b-media-body class="ml-3">
                     <b-media-body>
-                        <h5 class="mt-0 mb-1">{{blog.title}}</h5>
-                        <p>
+                        <h4 class="mt-0 mb-1">{{blog.title}}</h4>
+                        <h6>
                             {{blog.description}}
-                        </p>       
+                        </h6>       
 
                         <div>           
-                            <b-button size="sm" class="my-2 my-sm-0" type="submit" >
-                                <router-link :to="{name : 'Readmore', params: {detail_slug : blog.slug}}">Read More...</router-link>
-                            </b-button>           
+                            
+                                <router-link :to="{name : 'Readmore', params: {detail_slug : blog.slug}}">
+                                    <button size="sm" class="button" style="vertical-align:middle" type="submit" ><span>Read More</span></button>
+                                    
+                                </router-link>
+                                       
                         </div>
-                    </b-media-body>
+                    </b-media-body>  
                  </b-media-body>
     
             </b-media>
@@ -62,4 +65,46 @@ export default {
   margin-left: 100px;
   
 }
+.button {
+  display: inline-block;
+  border-radius: 50px;
+  background-color: #df75a6;
+  border: none;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 15px;
+  padding: 0px;
+  width: 130px;
+  height: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
 </style>

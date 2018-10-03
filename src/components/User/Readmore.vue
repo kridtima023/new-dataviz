@@ -1,27 +1,38 @@
 <template>
-    <div>
-        <b-media-aside vertical-align="center">
-        <b-img blank blank-color="#ccc" width="450" height="300" alt="placeholder" />
-        </b-media-aside>
-        <b-card v-if="blog" :key="blog.id">
-        <b-media no-body >
-        <b-media-body class="ml-3">
+  <div >  
+
+
+<!-- readmore -->
         
-        <h5 class="mt-0">{{blog.title}}</h5>
-        <p>
+    <b-card class="form mb-3"  v-if="blog" :key="blog.id">
+      <b-media-aside >
+        <b-img center blank blank-color="#ccc" width="450" height="300" />
+      </b-media-aside>
+
+      <b-media >
+        <b-media-body>
+          <h4 class="mt-0">{{blog.title}}</h4>
+          <h6>
             {{blog.description}}
-        </p>
-         {{blog.selected}}
-        <div class="small">
-        <bar v-if="blog.selected == 'bar'"></bar>
-        <line-chart v-if="blog.selected == 'line'"></line-chart>
-        </div>
-
+          </h6>
+            {{blog.selected}}
+              <div class="small">
+                <bar v-if="blog.selected == 'bar'"></bar>
+                <line-chart v-if="blog.selected == 'line'"></line-chart>
+              </div>
         </b-media-body>
-        </b-media>
-        </b-card>
+      </b-media>
+    </b-card>
 
-    </div>
+    <!-- footer -->
+
+
+
+
+</div>
+
+
+  
 </template>
 
 <script>
@@ -34,6 +45,7 @@ export default {
 
   data() {
     return {
+      image: require('@/assets/PTEIHEAD.png'),
       blog: null
     };
   },
@@ -68,4 +80,13 @@ export default {
   max-width: 600px;
   margin: 100px auto;
 }
+.form {
+  text-align: center;
+  max-width: 800px auto;
+  margin-top: 30px;
+  margin-right: 100px;
+  margin-left: 100px;
+  
+}
+
 </style>
