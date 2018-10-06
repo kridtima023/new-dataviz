@@ -1,54 +1,67 @@
 <template>
-    <div v-if="blog" class="edit-blog">
-        <h2>Edit Your Blog {{blog.title}}</h2>
+    <div class="edit-blog">
+        <b-card  v-if="blog" class="card mb-3">
+            <h2 class="add">Edit Your Blog {{blog.title}}</h2>
         <!-- {{this.$route.params.edit_slug}} -->
+
 <!-- image -->
-  <img :src="blog.imagepreview" class="preview-image" v-on:click="openupload" alt="Responsive image" />
-         <b-form-file type="file" name="image" id="file-filed" v-on:change="updatepreview"></b-form-file>
+            <div class="add mt-3">  
+                <img :src="blog.imagepreview" class="preview-image" v-on:click="openupload" alt="Responsive image" />
+                <b-form-file type="file" name="image" id="file-filed" v-on:change="updatepreview"></b-form-file>
+            </div>
+
+            <label class="head mt-3">Title </label>
+                <b-form-input   class="input"
+                                type="text"
+                                v-model="blog.title"
+                                required
+                                placeholder="Enter Title">
+                </b-form-input>
 
 
-    <label>Title :</label>
-    <b-form-input     type="text"
-                      v-model="blog.title"
-                      required
-                      placeholder="Enter Title">
-    </b-form-input>
 
-
-
-    <label>Description :</label>
-    <b-form-textarea id="description"
-                     v-model="blog.description"
-                     placeholder="Enter Description"
-                     :rows="3"
-                     :max-rows="6">
-    </b-form-textarea>
+            <label class="head mt-3">Description </label>
+                <b-form-textarea    class="input"
+                                    type="text"
+                                    id="description"
+                                    v-model="blog.description"
+                                    placeholder="Enter Description"
+                                    :rows="3"
+                                    :max-rows="6">
+                </b-form-textarea>
     <!-- preview -->
     <!-- <pre class="mt-3">{{ blog.title }}</pre> -->
 
 
     <!-- select a chart -->
-     <b-form-group label="Select a Chart">
-      <b-form-radio-group  v-model="blog.selected" 
-                          :options="options">
-      </b-form-radio-group>
-    </b-form-group>
+            <b-form-group class="head mt-3" label="Select a Chart">
+                <b-form-radio-group v-model="blog.selected" 
+                                :options="options">
+                </b-form-radio-group>
+            </b-form-group>
 
   <!-- preview -->
-    <div class="mt-3">
-      Selected: <strong>{{ blog.selected }}</strong>
-    </div>
+            <div class="head mt-3">
+                Selected: <strong>{{ blog.selected }}</strong>
+            </div>
+
     <!-- chart -->
-  <div class="small">
-  <bar v-if="blog.selected == 'bar'"></bar>
-  <line-chart v-if="blog.selected == 'line'"></line-chart>
-  </div>
+            <div class="small">
+                <bar v-if="blog.selected == 'bar'"></bar>
+                <line-chart v-if="blog.selected == 'line'"></line-chart>
+            </div>
 
   <!-- submit -->
-    <div class="btn">
-      <router-link :to="{ name : 'Overviews'}"><b-button v-on:click="Editblog()" >Update</b-button></router-link>
-      <router-link :to="{ name : 'Navbar'}"><b-button>Cancel</b-button></router-link>
-    </div>
+            <div class="add">
+                <router-link :to="{ name : 'Overviews'}">
+                    <b-button variant="success" v-on:click="Editblog()" >Update</b-button>
+                </router-link>
+
+                <router-link :to="{ name : 'Navbar'}">
+                    <b-button variant="danger">Cancel</b-button>
+                </router-link>
+            </div>
+        </b-card>
     </div>
 </template>
 

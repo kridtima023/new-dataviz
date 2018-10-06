@@ -25,30 +25,18 @@
 <div>
   <b-img :src="image" fluid-grow   alt="Responsive image" />
 </div>
-<!-- Search -->
-<b-nav-form class="search" center>
-        <b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search"/>
-        <b-button size="sm" class="my-2 my-sm-0" type="submit" variant="info ">Search</b-button>
-</b-nav-form>
+
+
 
     <router-view></router-view>
 
 <!-- Footer -->
-   <div  class="card-footer text-muted">
-    <!-- <div class="card w-50">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-<hr>
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        </div>
-    </div> -->
+   <div  class="card-footer text-muted bg-dark text-white" >
 
-<b-container fluid class="bv-example-row">
+<b-container fluid class="bv-example-row text-white">
     <b-row>
         <b-col sm="5" md="6">             
-            <div class="card-body text-success">
+            <div class="card-body ">
                 <h5 class="card-title">ABOUT US</h5>
                 <h4></h4>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -104,6 +92,7 @@
 
 </div>
 
+
   </div>
 </template>
 
@@ -127,11 +116,11 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Calibri;
+  font-size: 20px;
   text-align: auto;
   color: #2c3e50;
   margin-top: 0px;
 }
+
 </style>

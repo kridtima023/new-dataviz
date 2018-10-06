@@ -3,8 +3,7 @@
         <b-card class="card mb-3"  v-for="blog in this.blogs" :key="blog.id">
             <b-media no-body>
                 <b-media-aside vertical-align="center">
-                    <img blank blank-color="#ccc" width="450" height="400" alt="placeholder" :src="blog.imagepreview"/>
-                    
+                    <img  blank blank-color="#ccc" width="450"  height="400" alt="placeholder" :src="blog.imagepreview"/>
                 </b-media-aside>
    
                 <b-media-body class="ml-3">
@@ -16,14 +15,12 @@
 
                         <div>           
                             
-                                <router-link :to="{name : 'Readmore', params: {detail_slug : blog.slug}}">
+                                <router-link :to="{name : 'Detailblog', params: {detail_slug : blog.slug}}">
                                     <button size="sm" class="button" style="vertical-align:middle" type="submit" ><span>Read More</span></button>
                                     
                                 </router-link>
                                        
-                            <b-button size="sm" class="my-2 my-sm-0" type="submit" >
-                                <router-link :to="{name : 'Detailblog', params: {detail_slug : blog.slug}}">Read More...</router-link>
-                            </b-button>           
+                                     
                         </div>
                     </b-media-body>  
                  </b-media-body>
@@ -63,11 +60,12 @@ export default {
 
 
 .card {
-  text-align: left;
+  text-align: center;
   max-width: 800px auto;
   margin-top: 30px;
   margin-right: 100px;
   margin-left: 100px;
+  
   
 }
 .button {

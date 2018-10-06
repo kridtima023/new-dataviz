@@ -1,27 +1,28 @@
 <template>
-    <div>
-        <b-media-aside vertical-align="center">
-        </b-media-aside>
-        <b-card v-if="blog" :key="blog.id">
-        <img blank blank-color="#ccc" width="600" height="450" alt="placeholder" :src="blog.imagepreview"/>
-        <b-media no-body >
-        <b-media-body class="ml-3">
+  <div>
+    <b-card class="add mb-3"  v-if="blog" :key="blog.id">
+      <div class="add mb-3" >
+        <img blank blank-color="#ccc" width="600" height="450"  :src="blog.imagepreview"/>
+      </div>
         
-        <h5 class="mt-0">{{blog.title}}</h5>
-        <p>
+      <b-media>
+        <b-media-body class="ml-3">
+          <h4>{{blog.title}}</h4>
+          <h6>
             {{blog.description}}
-        </p>
-         {{blog.selected}}
-        <div class="small">
-        <bar v-if="blog.selected == 'bar'"></bar>
-        <line-chart v-if="blog.selected == 'line'"></line-chart>
-        </div>
-        <router-link :to="{ name : 'Overviews'}"><b-button>Back</b-button></router-link>
+          </h6>
+            {{blog.selected}}
+              <div class="small">
+                <bar v-if="blog.selected == 'bar'"></bar>
+                <line-chart v-if="blog.selected == 'line'"></line-chart>
+              </div>
+        
+          <router-link :to="{ name : 'Overviews'}"><b-button variant="success">Back</b-button></router-link>
         </b-media-body>
-        </b-media>
-        </b-card>
+      </b-media>
+    </b-card>
 
-    </div>
+  </div>
 </template>
 
 <script>
@@ -67,5 +68,10 @@ export default {
 .small {
   max-width: 600px;
   margin: 100px auto;
+}
+.img {
+  text-align: center;
+
+  
 }
 </style>

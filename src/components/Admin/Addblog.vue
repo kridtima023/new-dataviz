@@ -1,73 +1,109 @@
 <template>
-<div>
-  <b-card >
-    <h2 class="add">Add a New Blog</h2>
+  <div>
+    <b-card class="card mb-3">
+      <h2 class="add">Create a New Blog</h2>
 
-    <label class="head mt-3">Title </label>
-    <b-form-input     
-                      type="text"
-                      class="center-align indigo-text ">
-    </b-form-input>
+    
 <!-- image -->
-<div>  
-   <img :src="imagepreview" class="preview-image" v-on:click="openupload" alt="Responsive image" />
-   <b-form-file type="file" name="image" id="file-filed" v-on:change="updatepreview"></b-form-file>
-</div>
+      <div class="add mt-3">  
+        <img :src="imagepreview" class="preview-image" v-on:click="openupload" alt="Responsive image" />
+        <b-form-file class="mt-3" type="file" name="image" id="file-filed"  v-on:change="updatepreview"></b-form-file>
+      </div>
 
-        <!-- <button>
-            <i class="fa fa-upload" @click="upload">Upload</i>
-        </button> -->
 
-    <label>Title :</label>
-    <b-form-input     type="text"
-                      v-model="title"
-                      required
-                      placeholder="Enter Title">
-    </b-form-input>
 
-    <label class="head mt-3">Description </label>
-    <b-form-textarea id="description"
-                     v-model="description"
-                     placeholder="Enter Description"
-                     :rows="3"
-                     :max-rows="6">
-    </b-form-textarea>
+      <label class="head mt-3">Title </label>
+        <b-form-input   class="input"    
+                        type="text"
+                        v-model="title"
+                        required
+                        placeholder="Enter Title">
+        </b-form-input>
+
+      <label class="head mt-3">Description </label>
+        <b-form-textarea  class="input"
+                          type="text"
+                      id="description"
+                      v-model="description"
+                      placeholder="Enter Description"
+                      :rows="3"
+                      :max-rows="6">
+        </b-form-textarea>
     <!-- preview -->
     <!-- <pre class="mt-3">{{ blog.title }}</pre> -->
 
 
     <!-- select a chart -->
-    <b-form-group class="head mt-3" label="Select a Chart">
-      
-      <b-form-radio-group v-model="selected" 
+      <b-form-group class="head mt-3" label="Select a Chart">
+        <b-form-radio-group 
+                          v-model="selected" 
                           :options="options">
-      </b-form-radio-group>
-    </b-form-group>
+        </b-form-radio-group>
+      </b-form-group>
+
+<div>
+  <b-row class="row"> 
+    <div class="col">
+    <b-card class="box">
+      <img  src="../../assets/bars.png" width="80"/>
+      <p>Bar Chart</p>
+    </b-card>
+    </div>
+
+    <b-col>
+    <b-card class="box">
+      <img  src="../../assets/bars.png" width="80"/>
+      <p>Bar Chart</p>
+    </b-card>
+    </b-col>
+
+    <b-col>
+    <b-card class="box">
+      <img  src="../../assets/bars.png" width="80"/>
+      <p>Bar Chart</p>
+    </b-card>
+    </b-col>
+
+    <b-col>
+    <b-card class="box">
+      <img  src="../../assets/bars.png" width="80"/>
+      <p>Bar Chart</p>
+    </b-card>
+    </b-col>
+ </b-row>
+</div>
+
 
   <!-- preview -->
-    <div class="head mt-3">
-      Selected: <strong>{{ selected }}</strong>
-    </div>
+      <div class="head mt-3">
+        Selected: <strong>{{ selected }}</strong>
+      </div>
 
     <!-- chart -->
-  <div class="small">
-    <bar v-if="selected == 'bar'"></bar>
-    <line-chart v-if="selected == 'line'"></line-chart>
-  </div>
+      <div class="small">
+        <bar v-if="selected == 'bar'"></bar>
+        <line-chart v-if="selected == 'line'"></line-chart>
+        <bubble v-if="selected == 'bubble'"></bubble>
+        <doughtnut v-if="selected == 'doughtnut'"></doughtnut>
+        <horizontal></horizontal>
+        <pie></pie>
+      </div>
 
   <!-- submit -->
-    <div class="btn">
-      <b-button v-on:click="Addblog()" >Confirm</b-button>
+      <div class="add">
+        <b-button variant="success" v-on:click="Addblog()" >Confirm</b-button>
       <!-- <router-link :to="{name : 'Overviews'}"><b-button v-on:click="Addblog()" >Confirm</b-button></router-link> -->
-      <router-link :to="{ name : 'Navbar'}"><b-button>Cancel</b-button></router-link>
-    </div>
+        <router-link :to="{ name : 'Navbar'}" >
+          <b-button variant="danger">Cancel</b-button>
+        </router-link>
+      </div>
 
  <!-- Plain mode -->
   <!-- <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
  <!-- Plain mode
   <b-form-file v-model="file2" class="mt-3" plain></b-form-file> -->
 
-  </b-card>
+    </b-card>
   </div>
 </template>
 
@@ -151,20 +187,46 @@ export default {
   
 }
 .small {
-    max-width: 600px;
-    margin:  100px auto;
+  max-width: 600px;
+  margin:  100px auto;
 }
-  .add {
-    text-align: center;
-    font-family: Verdana;
+.add {
+  text-align: center;
+  font-family: 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
+  
 }
-  .head {
-    color: rgb(223, 128, 223);
-    font-family: Lucida Console;
-    font-size: 20px;  
+.head {
+  
+  color: rgb(223, 128, 223);
+  font-family: Tw Cen MT;
+  font-size: 30px;  
 }
-.placeholder {
-  font-family: Lucida Console;
+
+.input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-family: Tw Cen MT;
+  
 }
+.box {
+  
+  text-align: center;
+  max-width: 150px;
+  margin: 3px ;
+  
+}
+.col {
+  display: inline;  
+  text-align: center;
+}
+
+
+
+
  
 </style>

@@ -7,13 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueCharts from 'vue-chartjs'
 import JsonExcel from 'vue-json-excel'
 import vUploader from 'v-uploader'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee)
-
-Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(BootstrapVue,VueCharts)
 Vue.use(vUploader, uploaderConfig);
