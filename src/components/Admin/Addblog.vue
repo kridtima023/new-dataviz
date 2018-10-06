@@ -42,35 +42,57 @@
       </b-form-group>
 
 <div>
-  <b-row class="row"> 
-    <div class="col">
-    <b-card class="box">
-      <img  src="../../assets/bars.png" width="80"/>
-      <p>Bar Chart</p>
-    </b-card>
-    </div>
+  <b-row > 
+    <b-card-group>
+      <b-col>
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
 
-    <b-col>
-    <b-card class="box">
-      <img  src="../../assets/bars.png" width="80"/>
-      <p>Bar Chart</p>
-    </b-card>
-    </b-col>
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
+      </b-col>
 
-    <b-col>
-    <b-card class="box">
-      <img  src="../../assets/bars.png" width="80"/>
-      <p>Bar Chart</p>
-    </b-card>
-    </b-col>
+      <b-col>
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
 
-    <b-col>
-    <b-card class="box">
-      <img  src="../../assets/bars.png" width="80"/>
-      <p>Bar Chart</p>
-    </b-card>
-    </b-col>
- </b-row>
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
+      </b-col>
+
+      <b-col>
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
+
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
+      </b-col>
+
+      <b-col>
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
+
+        <b-card class="box">
+          <img  src="../../assets/bars.png" width="80"/>
+          <p>Bar Chart</p>
+        </b-card>
+      </b-col>
+    </b-card-group>
+  </b-row>
 </div>
 
 
@@ -216,14 +238,12 @@ export default {
 .box {
   
   text-align: center;
-  max-width: 150px;
-  margin: 3px ;
+  width: 170px;
+  height: 150px;
+  margin: 10px ;
   
 }
-.col {
-  display: inline;  
-  text-align: center;
-}
+
 
 
 
