@@ -41,59 +41,59 @@
         </b-form-radio-group>
       </b-form-group>
 
-<div>
-  <b-row > 
+<!-- <div>
+  <b-row> 
     <b-card-group>
       <b-col>
         <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
+          <img  src="../../assets/bar.png" width="80"/>
           <p>Bar Chart</p>
         </b-card>
 
         <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
-        </b-card>
-      </b-col>
-
-      <b-col>
-        <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
-        </b-card>
-
-        <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
+          <img  src="../../assets/polar.png" width="80"/>
+          <p>Polar Area</p>
         </b-card>
       </b-col>
 
       <b-col>
         <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
+          <img  src="../../assets/line.png" width="80"/>
+          <p>Line Chart</p>
         </b-card>
 
         <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
+          <img  src="../../assets/doughnut.png" width="80"/>
+          <p>Doughnut Chart</p>
         </b-card>
       </b-col>
 
       <b-col>
         <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
+          <img  src="../../assets/pie.png" width="80"/>
+          <p>Pie Chart</p>
         </b-card>
 
         <b-card class="box">
-          <img  src="../../assets/bars.png" width="80"/>
-          <p>Bar Chart</p>
+          <img  src="../../assets/horizon.png" width="80"/>
+          <p>Horizontal Bars</p>
+        </b-card>
+      </b-col>
+
+      <b-col>
+        <b-card class="box">
+          <img  src="../../assets/radar.png" width="80"/>
+          <p>Radar Chart</p>
+        </b-card>
+
+        <b-card class="box">
+          <img  src="../../assets/bubble.png" width="80"/>
+          <p>Bubble Chart</p>
         </b-card>
       </b-col>
     </b-card-group>
   </b-row>
-</div>
+</div> -->
 
 
   <!-- preview -->
@@ -105,10 +105,14 @@
       <div class="small">
         <bar v-if="selected == 'bar'"></bar>
         <line-chart v-if="selected == 'line'"></line-chart>
-        <bubble v-if="selected == 'bubble'"></bubble>
-        <doughtnut v-if="selected == 'doughtnut'"></doughtnut>
-        <horizontal></horizontal>
-        <pie></pie>
+        <doughnut v-if="selected =='doughnut'"></doughnut>
+        <pie v-if="selected =='pie'"></pie>
+        <radar v-if="selected =='radar'"></radar>
+        <polar-area v-if="selected =='polar'"></polar-area>
+        <bubble v-if="selected =='bubble'"></bubble>
+        <horizontal-bar v-if="selected =='horizontal'"></horizontal-bar>
+        
+        
       </div>
 
   <!-- submit -->
@@ -134,11 +138,17 @@ import db from '@/firebase/init'
 import slugify from 'slugify'
 import Bar from '../Chart/BarChart.js'
 import LineChart from '../Chart/LineChart.js'
+import Doughnut from '../Chart/DoughnutChart.js'
+import Pie from '../Chart/PieChart.js'
+import Radar from '../Chart/RadarChart.js'
+import PolarArea from '../Chart/PolarChart.js'
+import Bubble from '../Chart/BubbleChart.js'
+import HorizontalBar from '../Chart/HorizontalChart.js'
 
 export default {
 
     name : 'Addblog',
-    components : { Bar, LineChart},
+    components : { Bar, LineChart, Doughnut, Pie, Radar, PolarArea, Bubble, HorizontalBar},
 
     data () {
     return {
@@ -149,7 +159,15 @@ export default {
       slug : null ,
       title : null,
       selected: null,
-      options: [{ text:'Line' , value:'line'},{text:'Bar',value:'bar'}]
+      options: [{ text:'Line' , value:'line'},
+                {text:'Bar',value:'bar'},
+                { text: 'Doughnut', value: 'doughnut' },
+                { text: 'Pie', value: 'pie' },
+                { text: 'Radar', value: 'radar' },
+                { text: 'Polar', value: 'polar' },
+                { text: 'Bubble', value: 'bubble' },
+                { text: 'Horizontal', value: 'horizontal' }
+              ]
       }
       
   },
@@ -236,7 +254,7 @@ export default {
   
 }
 .box {
-  
+  font-size: 15px;
   text-align: center;
   width: 170px;
   height: 150px;

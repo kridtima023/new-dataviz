@@ -1,8 +1,4 @@
 import { Bubble } from 'vue-chartjs'
-
-
-
-
 export default {
   extends: Bubble,
   props: ['data', 'options'],
@@ -18,7 +14,7 @@ export default {
           data: [{
             x: 21269017,
             y: 5.245,
-            r: 15
+            r: 100
           }]
         }, {
           label: ["Denmark"],

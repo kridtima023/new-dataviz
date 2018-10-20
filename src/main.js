@@ -7,8 +7,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueCharts from 'vue-chartjs'
 import JsonExcel from 'vue-json-excel'
 import vUploader from 'v-uploader'
+import vueXlsxTable from 'vue-xlsx-table'
 
-
+Vue.use(vueXlsxTable)
 Vue.use(BootstrapVue,VueCharts)
 Vue.use(vUploader, uploaderConfig);
 Vue.component('downloadExcel', JsonExcel)

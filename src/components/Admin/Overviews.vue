@@ -3,7 +3,7 @@
         <b-card class="card mb-3"  v-for="blog in this.blogs" :key="blog.id" >
 
             <button type="button" class="close" aria-label="Close"  >                
-                <img   src="../../assets/delete.png" width="30" height="25" />                
+                <img @click="deleteblog(blog.id)" src="../../assets/delete.png" width="30" height="25" />                
             </button>
        
       
@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         deleteblog(id){
-            
+            alert('Are you sure?')
             db.collection('blogs').doc(id).delete().then(() =>{
                 this.blogs = this.blogs.filter(blog => {
                     return blog.id != id

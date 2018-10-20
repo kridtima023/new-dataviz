@@ -19,6 +19,12 @@
               <div class="small">
                 <bar v-if="blog.selected == 'bar'"></bar>
                 <line-chart v-if="blog.selected == 'line'"></line-chart>
+                <doughnut v-if="blog.selected =='doughnut'"></doughnut>
+                <pie v-if="blog.selected =='pie'"></pie>
+                <radar v-if="blog.selected =='radar'"></radar>
+                <polar-area v-if="blog.selected =='polar'"></polar-area>
+                <bubble v-if="blog.selected =='bubble'"></bubble>
+                <horizaontal-bar v-if="blog.selected =='horizontal'"></horizaontal-bar>
               </div>
         </b-media-body>
       </b-media>
@@ -39,9 +45,16 @@
 import db from "@/firebase/init";
 import Bar from "../Chart/BarChart.js";
 import LineChart from "../Chart/LineChart.js";
+import Doughnut from '../Chart/DoughnutChart.js'
+import Pie from '../Chart/PieChart.js'
+import Radar from '../Chart/RadarChart.js'
+import PolarArea from '../Chart/PolarChart.js'
+import Bubble from '../Chart/BubbleChart.js'
+import HorizontalBar from '../Chart/HorizontalChart.js'
+
 export default {
   name: "Readmore",
-  components: { Bar, LineChart },
+  components: { Bar, LineChart, Doughnut, Pie, Radar, PolarArea, Bubble, HorizontalBar},
 
   data() {
     return {

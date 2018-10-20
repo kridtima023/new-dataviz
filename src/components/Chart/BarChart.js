@@ -8,24 +8,18 @@ export default {
     mounted () {
       // Overwriting base render method with actual data.
       this.renderChart({
-        labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+        labels: this.data.labels,
         datasets: [{
-            label: 'Distribution of nationality',
-            data: [617594,
-              181045,
-              153060,
-              106519,
-              105162,
-              95072],
+            label: '',
+            data: this.data.values,
             
             backgroundColor:[ 
             'rgba(255, 99, 132, 0.6)',
             'rgba(54, 162, 235, 0.6)',
             'rgba(255, 206, 86, 0.6)',
             'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)',
-            'rgba(255, 159, 64, 0.6)',
-            'rgba(255, 99, 132, 0.6)'],
+            'rgba(153, 102, 255, 0.6)'
+          ],
            
             borderWidth:1,
             borderColor:'#777',

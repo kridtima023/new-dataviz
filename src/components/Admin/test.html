@@ -1,0 +1,14 @@
+<b-modal v-model="modalShow" v-if="xlsdata">
+    <table border="1">
+        <thead>
+            <tr>
+                <td v-for="(head, index) in xlsdata.header" :key="index">{{head}}</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(body, index) in xlsdata.body" :key="index">
+                <td v-for="item in body" :key="item">{{item}}</td>
+            </tr>
+        </tbody>
+    </table>
+</b-modal>

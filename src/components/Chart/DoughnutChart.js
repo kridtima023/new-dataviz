@@ -1,18 +1,14 @@
 import { Doughnut } from 'vue-chartjs'
-
-
-
-
 export default {
   extends: Doughnut,
   props: ['data', 'options'],
   mounted () {
     this.renderChart({
       
-        labels: ['Mainland Chinese(%)', 'Australian ans New Zealanders(%)', 'Russian(%)', 'Thai(%)', 'Other Asians(%)', 'Other Europeans(%)','Others(%)'],
+        labels: this.data.labels,
         datasets: [{
-            label: 'Distribution of nationality',
-            data: [23.91, 12.94, 16.71, 16.54, 11.71, 12.61, 5.57],
+            label: 'NPS of Phuket',
+            data: this.data.values,
             
             backgroundColor:[ 
             'rgba(255, 99, 132, 0.6)',
@@ -33,7 +29,7 @@ export default {
           ,options:{
             title: {
               display: true,
-              text: 'Distribution of nationality'
+              text: 'NPS of Phuket'
           }
         
       }
