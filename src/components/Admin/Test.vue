@@ -46,8 +46,8 @@
           <bar v-if="selected == 'bar'" :data="graphdata"></bar>
           <line-chart v-if="selected == 'line'" :data="graphdata"></line-chart>
           <doughnut v-if="selected =='doughnut'" :data="graphdata"></doughnut>
-          <pie v-if="selected =='pie'"></pie>
-          <horizontal-bar v-if="selected =='horizontal'"></horizontal-bar>      
+          <pie v-if="selected =='pie'" :data="graphdata"></pie>
+          <horizontal-bar v-if="selected =='horizontal'" :data="graphdata"></horizontal-bar>      
         
         </div>
       </div>
